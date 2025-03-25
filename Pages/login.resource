@@ -21,7 +21,6 @@ Get Home Pages
     
 Vérifier Message Erreur
     [Arguments]    ${expected_message}    ${locator}=css:.error-message-container
-    Wait Until Element Is Visible    ${locator}    timeout=5s
     ${error_msg}=    Get Text    ${locator}
     Should Be Equal As Strings    ${error_msg}    ${expected_message}
     

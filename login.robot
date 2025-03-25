@@ -8,6 +8,7 @@ Resource    Pages/login.resource
 *** Test Cases ***
 Login Avec Cridentials Corrects
     [Documentation]    Login avec credentials Corrects
+    [Tags]    @regresssion @smoke
     Open Browser    https://www.saucedemo.com/    Chrome
     Saisir Username    standard_user
     Saisir Password    secret_sauce    
@@ -19,7 +20,7 @@ Login Avec Cridentials Corrects
 
 Login Avec Cridentials Incorrect Username
     [Documentation]    Login avec credentials Corrects
-    [Tags]    @regresssion
+    [Tags]    @smoke
     Open Browser    https://www.saucedemo.com/    Chrome
     Saisir Username    standard_users
     Saisir Password    secret_sauce    
