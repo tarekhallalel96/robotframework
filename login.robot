@@ -16,7 +16,7 @@ Login Avec Cridentials Corrects
     #Wait Until Element Is Visible    css:.title    timeout=5s
     ${txt}    Get Text    css:.title
     Should Be Equal As Strings    ${txt}    Products
-    Close Browser
+    [Teardown]    Close Browser
 
 Login Avec Cridentials Incorrect Username
     [Documentation]    Login avec credentials Corrects
