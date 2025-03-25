@@ -25,7 +25,7 @@ pipeline {
         stage('Run Robot Framework Tests') {
             steps {
                 sh '''
-                robot $ROBOT_DIR
+                robot --variable REMOTE_URL:http://selenium-hub:4444/wd/hub $ROBOT_DIR
                 '''
             }
         }
