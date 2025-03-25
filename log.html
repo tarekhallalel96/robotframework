@@ -2011,3 +2011,444 @@ const theme = function () {
         }
         if (storage.get(storageKey))
             return storage.get(storageKey) === 'dark' ? 'dark' : 'light';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function setPreference() {
+        storage.set(storageKey, theme.value);
+        reflectPreference();
+    }
+    function reflectPreference() {
+        document.body.setAttribute('data-theme', theme.value);
+        document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme.value);
+        const event = new Event('theme-change', {value: theme.value});
+        document.dispatchEvent(event);
+    }
+    function onClick() {
+        theme.value = theme.value === 'light' ? 'dark' : 'light';
+        document.body.setAttribute('theme-toggled', "");
+        setPreference();
+    }
+    return {init: init, getPreference: getPreference, setPreference: setPreference,
+        reflectPreference: reflectPreference, onClick: onClick};
+}();
+</script>
+<script type="text/javascript">
+storage = function () {
+    var prefix = 'robot-framework-';
+    var storage;
+    function init(user) {
+        if (user)
+            prefix += user + '-';
+        storage = getStorage();
+    }
+    function getStorage() {
+        // Use localStorage if it's accessible, normal object otherwise.
+        // Inspired by https://stackoverflow.com/questions/11214404
+        try {
+            localStorage.setItem(prefix, prefix);
+            localStorage.removeItem(prefix);
+            return localStorage;
+        } catch (exception) {
+            return {};
+        }
+    }
+    function get(key, defaultValue) {
+        var value = storage[fullKey(key)];
+        if (typeof value === 'undefined')
+            return defaultValue;
+        return value;
+    }
+    function set(key, value) {
+        storage[fullKey(key)] = value;
+    }
+    function fullKey(key) {
+        return prefix + key;
+    }
+    return {init: init, get: get, set: set, fullKey: fullKey};
+}();
+</script>
+<script type="text/javascript">
+window.output = {};
+</script>
+<script type="text/javascript">
+window.output["suite"] = [1,2,3,0,[],[1,0,20276],[],[[4,0,0,[5],[1,592,5993],[[1,6,7,0,8,9,0,0,[1,596,3103],[[597,2,10]]],[0,11,0,0,0,12,0,0,[1,3715,80],[[0,13,14,0,15,16,0,0,[1,3717,74],[]],[8,0,0,0,0,17,0,0,[1,3792,1],[]]]],[2,18,7,0,19,0,0,0,[1,3846,2739],[]]]],[20,0,0,[5],[1,6589,6072],[[1,6,7,0,8,9,0,0,[1,6590,3222],[[6590,2,10]]],[0,11,0,0,0,21,0,0,[1,9830,7],[[0,13,14,0,15,16,0,0,[1,9831,3],[]],[8,0,0,0,0,17,0,0,[1,9834,2],[]]]],[2,18,7,0,19,0,0,0,[1,9846,2813],[]]]],[22,0,0,[5],[1,12663,7610],[[1,6,7,0,8,9,0,0,[1,12664,2981],[[12664,2,10]]],[0,11,0,0,0,23,0,0,[1,15666,13],[[0,13,14,0,15,16,0,0,[1,15667,11],[]],[8,0,0,0,0,17,0,0,[1,15678,1],[]]]],[2,18,7,0,19,0,0,0,[1,15687,4585],[]]]]],[],[3,3,0,0]];
+</script>
+<script type="text/javascript">
+window.output["strings"] = [];
+</script>
+<script type="text/javascript">
+window.output["strings"] = window.output["strings"].concat(["*","*Login Avec Template Data","*c:\\Users\\Arnaud\\Documents\\Log\\Robot_Framework\\sauce-demo-robot\\tests\\login_avec_template_data.robot","eNq9zcsKwjAQRuFXke7b2ZdaEMWVK8F1mCZ/azHJlMlEX9/LQ7g+H5yBd3fFvG/mNaInomNPtwItdNDMNdBJfE3IVugiC11lEnNn5YSX6IMKV482IEmr30SG8qFRljU7fsI7Q9oiG1xg4+6HmvGPs4F4fANUe1Sc","*Case 1","*@regresssion","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*<a href=\"http://www.saucedemo.com\">http://www.saucedemo.com\x3c/a>    chrome","*Opening browser 'chrome' to base url '<a href=\"http://www.saucedemo.com\">http://www.saucedemo.com\x3c/a>'.","*Login Avec Cridentials Corrects","*username=standard_user    password=secret_sauce","*Log To Console","*BuiltIn","*<p>Logs the given message to the console.\x3c/p>","*${username} ${password}","*${username}    ${password}","*Close Browser","*<p>Closes the current browser.\x3c/p>","*Case 2","*username=problem_user    password=secret_sauce","*Case 3","*username=visual_user    password=secret_sauce","*Error in file 'c:\\Users\\Arnaud\\Documents\\Log\\Robot_Framework\\sauce-demo-robot\\tests\\login_avec_template_data.robot' on line 17: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead."]);
+</script>
+<script type="text/javascript">
+window.output["stats"] = [[{"elapsed":"00:00:20","fail":0,"label":"All Tests","pass":3,"skip":0}],[{"elapsed":"00:00:20","fail":0,"label":"@regresssion","pass":3,"skip":0}],[{"elapsed":"00:00:20","fail":0,"id":"s1","label":"Login Avec Template Data","name":"Login Avec Template Data","pass":3,"skip":0}]];
+</script>
+<script type="text/javascript">
+window.output["errors"] = [[-32,3,24]];
+</script>
+<script type="text/javascript">
+window.output["baseMillis"] = 1742905461493;
+</script>
+<script type="text/javascript">
+window.output["generated"] = 20310;
+</script>
+<script type="text/javascript">
+window.output["expand_keywords"] = null;
+</script>
+<script type="text/javascript">
+window.settings = {"defaultLevel":"INFO","minLevel":"INFO","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
+</script>
+<title></title>
+</head>
+<body data-theme="dark">
+<div id="javascript-disabled">
+  <h1>Opening Robot Framework log failed</h1>
+  <ul>
+    <li>Verify that you have <b>JavaScript enabled</b> in your browser.</li>
+    <li>Make sure you are using a <b>modern enough browser</b>. If using Internet Explorer, version 11 is required.</li>
+    <li>Check are there messages in your browser's <b>JavaScript error log</b>. Please report the problem if you suspect you have encountered a bug.</li>
+  </ul>
+</div>
+<script type="text/javascript">removeJavaScriptDisabledWarning();</script>
+<div id="header"></div>
+<div id="statistics-container"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    storage.init();
+    theme.init(storage);
+    try {
+        var topsuite = window.testdata.suite();
+    } catch (error) {
+        addJavaScriptDisabledWarning(error);
+        return;
+    }
+    initLayout(topsuite.name, 'Log');
+    theme.reflectPreference();
+    addStatistics();
+    addErrors();
+    addExecutionLog(topsuite);
+    addLogLevelSelector(window.settings['minLevel'], window.settings['defaultLevel']);
+    if (window.location.hash) {
+        makeElementVisible(window.location.hash.substring(1));
+    } else {
+        expandSuite(topsuite);
+    }
+    setTimeout(function () { loadAndExpandElementIds(window.output['expand_keywords']); }, 100);
+});
+
+function addLogLevelSelector(minLevel, defaultLevel) {
+    var controller = LogLevelController(minLevel, defaultLevel);
+    if (controller.showLogLevelSelector()) {
+        var selector = $.tmpl('logLevelSelectorTemplate', controller);
+        selector.find('select').val(controller.defaultLogLevel());
+        selector.appendTo($('#top-right-header'));
+        $('#report-or-log-link').find('a').css({'border-bottom-left-radius': '0'});
+        setMessageVisibility(controller.defaultLogLevel());
+    }
+}
+
+function addErrors() {
+    var errors = window.testdata.errorIterator();
+    if (errors.hasNext()) {
+        $.tmpl('errorHeaderTemplate').appendTo($('body'));
+        drawErrorsRecursively(errors, $('#errors'));
+    }
+}
+
+function drawErrorsRecursively(errors, target) {
+    var elements = popFromIterator(errors, 10);
+    $.tmpl('errorTemplate', elements).appendTo(target);
+    if (errors.hasNext())
+        setTimeout(function () { drawErrorsRecursively(errors, target); }, 0);
+    else {
+        // Errors may have moved scroll position. Resetting location re-scrolls.
+        if (window.location.hash)
+            window.location.replace(window.location.hash);
+    }
+}
+
+function popFromIterator(iterator, upTo) {
+    var result = [];
+    while (iterator.hasNext() > 0 && result.length < upTo)
+        result.push(iterator.next());
+    return result;
+}
+
+function makeElementVisible(id) {
+    window.testdata.ensureLoaded(id, function (ids) {
+        util.map(ids, expandElementWithId);
+        if (ids.length) {
+            expandFailed(window.testdata.findLoaded(util.last(ids)));
+            window.location.hash = id;
+            document.getElementById(id).scrollIntoView();
+        }
+    });
+}
+
+function addExecutionLog(main) {
+    $('body').append($(testOrTask('<h2>{Test} Execution Log</h2>')),
+                     $.tmpl('suiteTemplate', main));
+}
+</script>
+
+<script type="text/x-jquery-tmpl" id="totalStatisticsRowTemplate">
+  <tr class="row-${$item.index}">
+    <td class="stats-col-name">
+      <div class="stat-name">
+        <span>{{html label}}</span>
+      </div>
+    </td>
+    {{tmpl($data) 'statColumnsTemplate'}}
+  </tr>
+</script>
+
+<script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
+  <tr class="row-${$item.index}">
+    <td class="stats-col-name" title="${doc}">
+      <div class="stat-name">
+        <span>{{html label}}</span>
+        {{if info}}(${info}){{/if}}
+      </div>
+      <div class="tag-links">
+        {{each links}}
+        <span>[<a href="{{html $value.url}}" title="{{html $value.url}}">{{html $value.title}}</a>]</span>
+        {{/each}}
+      </div>
+    </td>
+    {{tmpl($data) 'statColumnsTemplate'}}
+  </tr>
+</script>
+
+<script type="text/x-jquery-tmpl" id="suiteStatisticsRowTemplate">
+  <tr onclick="makeElementVisible('${id}')" class="row-${$item.index}">
+    <td class="stats-col-name" title="{{html label}}">
+      <div class="stat-name">
+        <a href="#${id}"><span class="parent-name">{{html formatParentName}}</span>{{html name}}</a>
+      </div>
+    </td>
+    {{tmpl($data) 'statColumnsTemplate'}}
+  </tr>
+</script>
+
+<script type="text/x-jquery-tmpl" id="errorHeaderTemplate">
+  <h2>{{= testOrTask('{Test}')}} Execution Errors</h2>
+  <table id="errors"></table>
+</script>
+
+<script type="text/x-jquery-tmpl" id="errorTemplate">
+  <tr id="${id}" class="message-row">
+    <td class="error-time">
+      {{if link}}
+      <a onclick="makeElementVisible('${link}')" href="#${link}" title="Link to details">${date} ${time}</a>
+      {{else}}
+      ${date} ${time}
+      {{/if}}
+    </td>
+    <td class="${level.toLowerCase()} level"><span class="label ${level.toLowerCase()}">${level}</span></td>
+    <td class="message">{{html text}}</td>
+    <td class="select-message" onclick="javascript:selectMessage('${id}')" title="Select message text">
+      <div></div>
+    </td>
+  </tr>
+</script>
+
+<script type="text/x-jquery-tmpl" id="suiteTemplate">
+  <div id="${id}" class="suite">
+    <div class="element-header closed" onclick="toggleSuite('${id}')">
+      <div class="element-header-left" title="SUITE  {{html name}}  [${status}]">
+        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
+        <span class="label ${status.toLowerCase()}">SUITE</span>
+        <span class="name">{{html name}}</span>
+      </div>
+      <div class="element-header-right" onclick="stopPropagation(event)" title="">
+        <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
+        <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
+        <a class="link" title="Link to this suite" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+      </div>
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+    </div>
+    <div class="children">
+      <table class="metadata">
+        <tr>
+          <th>Full Name:</th>
+          <td>{{html fullName}}</td>
+        </tr>
+        {{if doc()}}
+        <tr>
+          <th>Documentation:</th>
+          <td class="doc">{{html doc()}}</td>
+        </tr>
+        {{/if}}
+        {{each metadata}}
+        <tr>
+          <th>{{html $value[0]}}:</th>
+          <td class="doc">{{html $value[1]}}</td>
+        </tr>
+        {{/each}}
+        {{if source}}
+        <tr>
+          <th>Source:</th>
+          {{if relativeSource}}
+          <td><a href="${relativeSource}">{{html source}}</a></td>
+          {{else}}
+          <td>{{html source}}</td>
+          {{/if}}
+        </tr>
+        {{/if}}
+        <tr>
+          <th>Start / End / Elapsed:</th>
+          <td>${times.startTime} / ${times.endTime} / ${times.elapsedTime}</td>
+        </tr>
+        <tr>
+          <th>Status:</th>
+          <td>{{tmpl($data) 'suiteStatusMessageTemplate'}}</td>
+        </tr>
+        {{if message()}}
+        <tr>
+          <th>Message:</th>
+          <td class="message">{{html message()}}</td>
+        </tr>
+        {{/if}}
+      </table>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-jquery-tmpl" id="testTemplate">
+  <div id="${id}" class="test">
+    <div class="element-header closed" onclick="toggleTest('${id}')">
+      <div class="element-header-left" title="{{= testOrTask('{TEST}')}}  {{html name}}  [${status}]">
+        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
+        <span class="label ${status.toLowerCase()}">{{= testOrTask('{TEST}')}}</span>
+        <span class="name">{{html name}}</span>
+      </div>
+      <div class="element-header-right" onclick="stopPropagation(event)" title="">
+        <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
+        <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
+        <a class="link" title="Link to this {{= testOrTask('{test}')}}" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+      </div>
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+    </div>
+    <div class="children">
+      <table class="metadata">
+        <tr>
+          <th>Full Name:</th>
+          <td>{{html fullName}}</td>
+        </tr>
+        {{if doc()}}
+        <tr>
+          <th>Documentation:</th>
+          <td class="doc">{{html doc()}}</td>
+        </tr>
+        {{/if}}
+        {{if tags.length}}
+        <tr>
+          <th>Tags:</th>
+          <td>{{html tags.join(', ')}}</td>
+        </tr>
+        {{/if}}
+        {{if timeout}}
+        <tr>
+          <th>Timeout:</th>
+          <td>{{html timeout}}</td>
+        </tr>
+        {{/if}}
+        <tr>
+          <th>Start / End / Elapsed:</th>
+          <td>${times.startTime} / ${times.endTime} / ${times.elapsedTime}</td>
+        </tr>
+        <tr>
+          <th>Status:</th>
+          <td><span class="label ${status.toLowerCase()}">${status}</span></td>
+        </tr>
+        {{if message()}}
+        <tr>
+          <th>Message:</th>
+          <td class="message">{{html message()}}</td>
+        </tr>
+        {{/if}}
+      </table>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-jquery-tmpl" id="keywordTemplate">
+  <div id="${id}" class="keyword">
+    <div class="element-header closed" onclick="toggleKeyword('${id}')">
+      <div class="element-header-left" title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
+        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
+        <span class="label ${status.toLowerCase()}">${type}</span>
+        <span class="assign">{{html assign}}</span>
+        <span class="name"><span class="parent-name">{{html libname}}{{if libname}} . {{/if}}</span>{{html name}}</span>
+        &nbsp;
+        <span class="arg">{{html arguments}}</span>
+      </div>
+      <div class="element-header-right" onclick="stopPropagation(event)">
+        <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
+        <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
+        <a class="link" title="Link to this item" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+      </div>
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+    </div>
+    <div class="children">
+      <table class="metadata keyword-metadata">
+        {{if doc()}}
+        <tr>
+          <th>Documentation:</th>
+          <td class="doc">{{html doc()}}</td>
+        </tr>
+        {{/if}}
+        {{if tags}}
+        <tr>
+          <th>Tags:</th>
+          <td>{{html tags}}</td>
+        </tr>
+        {{/if}}
+        {{if timeout}}
+        <tr>
+          <th>Timeout:</th>
+          <td>{{html timeout}}</td>
+        </tr>
+        {{/if}}
+        <tr>
+          <th>Start / End / Elapsed:</th>
+          <td>${times.startTime} / ${times.endTime} / ${times.elapsedTime}</td>
+        </tr>
+        {{if message()}}
+        <tr>
+          <th>Message:</th>
+          <td class="message">{{html message()}}</td>
+        </tr>
+        {{/if}}
+      </table>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-jquery-tmpl" id="messageTemplate">
+  <table id="${id}" class="messages ${level.toLowerCase()}-message">
+    <tr class="message-row">
+      <td class="time">${time}</td>
+      <td class="${level.toLowerCase()} level"><span class="label ${level.toLowerCase()}">${level}</span></td>
+      <td class="message">{{html text}}</td>
+      <td class="select-message" onclick="javascript:selectMessage('${id}')" title="Select message text">
+        <div></div>
+      </td>
+    </tr>
+  </table>
+</script>
+
+<script type="text/x-jquery-tmpl" id="logLevelSelectorTemplate">
+  <div id="log-level-selector">
+  Log level:
+    <select onchange="logLevelSelected(this.options[selectedIndex].value)">
+      <option value="3">WARN</option>
+      <option value="2">INFO</option>
+      <option value="1">DEBUG</option>
+      {{if showTrace()}}<option value="0">TRACE</option>{{/if}}
+    </select>
+  </div>
+</script>
+
+</body>
+</html>
