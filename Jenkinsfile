@@ -2,8 +2,6 @@ pipeline {
     agent {
         docker {
             image 'python:3.9-slim' 
-            label 'docker'         
-            args '-v $PWD:$PWD'     
         }
     }
 
