@@ -2,8 +2,6 @@
 
 Library    ../.venv/Lib/site-packages/SeleniumLibrary/__init__.py
 Resource    ../Pages/login.resource
-Test Template    Login Avec Cridentials Corrects
-
 
 
 *** Keywords ***

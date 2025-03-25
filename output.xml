@@ -1,217 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.2 on win32)" generated="2025-03-25T12:14:53.899058" rpa="false" schemaversion="5">
-<suite id="s1" name="Login Avec Template" source="c:\Users\Arnaud\Documents\Log\Robot_Framework\sauce-demo-robot\tests\login_avec_template.robot">
-<test id="s1-t1" name="Login Avec Cridentials Corrects" line="9">
+<robot generator="Robot 7.2.2 (Python 3.12.2 on win32)" generated="2025-03-25T13:21:02.185324" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Avec Template Data" source="c:\Users\Arnaud\Documents\Log\Robot_Framework\sauce-demo-robot\tests\login_avec_template_data.robot">
+<test id="s1-t1" name="Case 1" line="10">
 <kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
-<msg time="2025-03-25T12:14:54.424809" level="INFO">Opening browser 'chrome' to base url 'http://www.saucedemo.com'.</msg>
+<msg time="2025-03-25T13:21:02.830390" level="INFO">Opening browser 'chrome' to base url 'http://www.saucedemo.com'.</msg>
 <arg>http://www.saucedemo.com</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-03-25T12:14:54.423811" elapsed="2.829901"/>
+<status status="PASS" start="2025-03-25T13:21:02.829401" elapsed="3.532977"/>
 </kw>
-<kw name="Login Avec Cridentials Corrects" owner="login_template">
-<kw name="Saisir Username" owner="login">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:14:57.270717" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
-<arg>id:user-name</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:14:57.269713" elapsed="0.329325"/>
+<kw name="Login Avec Cridentials Corrects">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${username} ${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-25T13:21:06.598263" elapsed="0.163584"/>
 </kw>
-<arg>${username}</arg>
-<status status="PASS" start="2025-03-25T12:14:57.268713" elapsed="0.330325"/>
-</kw>
-<kw name="Saisir Password" owner="login">
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:14:57.601741" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg time="2025-03-25T12:14:57.673430" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>id:password</arg>
-<arg>${password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:14:57.600726" elapsed="0.214120"/>
-</kw>
-<arg>${password}</arg>
-<status status="PASS" start="2025-03-25T12:14:57.600215" elapsed="0.215628"/>
-</kw>
-<kw name="Click Login" owner="login">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:14:57.817831" level="INFO">Clicking button 'id:login-button'.</msg>
-<arg>id:login-button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:14:57.817831" elapsed="0.257198"/>
-</kw>
-<status status="PASS" start="2025-03-25T12:14:57.816829" elapsed="0.258200"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:14:58.161093" level="INFO">${txt} = Products</msg>
-<var>${txt}</var>
-<arg>css:.title</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:14:58.076029" elapsed="0.086074"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${txt}</arg>
-<arg>Products</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-03-25T12:14:58.163098" elapsed="0.000999"/>
+<return>
+<value>${username}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-03-25T13:21:06.762849" elapsed="0.001001"/>
+</return>
+<arg>username=standard_user</arg>
+<arg>password=secret_sauce</arg>
+<status status="PASS" start="2025-03-25T13:21:06.597264" elapsed="0.166586"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-25T12:14:58.164097" elapsed="2.934654"/>
+<status status="PASS" start="2025-03-25T13:21:06.780849" elapsed="5.713553"/>
 </kw>
-<arg>standard_user</arg>
-<arg>secret_sauce</arg>
-<tag>@regresssion @smoke</tag>
-<doc>Login avec credentials Corrects</doc>
-<status status="PASS" start="2025-03-25T12:14:57.267717" elapsed="3.831034"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-25T12:15:01.099795" elapsed="0.000000"/>
-</kw>
-<status status="PASS" start="2025-03-25T12:14:54.421809" elapsed="6.679003"/>
+<status status="PASS" start="2025-03-25T13:21:02.827409" elapsed="9.668505"/>
 </test>
-<test id="s1-t2" name="Login Avec Cridentials Corrects" line="10">
+<test id="s1-t2" name="Case 2" line="10">
 <kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
-<msg time="2025-03-25T12:15:01.104809" level="INFO">Opening browser 'chrome' to base url 'http://www.saucedemo.com'.</msg>
+<msg time="2025-03-25T13:21:12.503926" level="INFO">Opening browser 'chrome' to base url 'http://www.saucedemo.com'.</msg>
 <arg>http://www.saucedemo.com</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-03-25T12:15:01.104809" elapsed="2.815317"/>
+<status status="PASS" start="2025-03-25T13:21:12.502925" elapsed="3.574021"/>
 </kw>
-<kw name="Login Avec Cridentials Corrects" owner="login_template">
-<kw name="Saisir Username" owner="login">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:03.950140" level="INFO">Typing text 'problem_user' into text field 'id:user-name'.</msg>
-<arg>id:user-name</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:03.949140" elapsed="0.270535"/>
+<kw name="Login Avec Cridentials Corrects">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${username} ${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-25T13:21:16.083014" elapsed="0.000952"/>
 </kw>
-<arg>${username}</arg>
-<status status="PASS" start="2025-03-25T12:15:03.948137" elapsed="0.271538"/>
-</kw>
-<kw name="Saisir Password" owner="login">
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:04.222681" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg time="2025-03-25T12:15:04.323321" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>id:password</arg>
-<arg>${password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:04.221682" elapsed="0.228344"/>
-</kw>
-<arg>${password}</arg>
-<status status="PASS" start="2025-03-25T12:15:04.220678" elapsed="0.230350"/>
-</kw>
-<kw name="Click Login" owner="login">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:04.453024" level="INFO">Clicking button 'id:login-button'.</msg>
-<arg>id:login-button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:04.452026" elapsed="0.219750"/>
-</kw>
-<status status="PASS" start="2025-03-25T12:15:04.451028" elapsed="0.220748"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:04.748076" level="INFO">${txt} = Products</msg>
-<var>${txt}</var>
-<arg>css:.title</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:04.672784" elapsed="0.075292"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${txt}</arg>
-<arg>Products</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-03-25T12:15:04.748076" elapsed="0.001000"/>
+<return>
+<value>${username}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-03-25T13:21:16.084943" elapsed="0.001002"/>
+</return>
+<arg>username=problem_user</arg>
+<arg>password=secret_sauce</arg>
+<status status="PASS" start="2025-03-25T13:21:16.080946" elapsed="0.004999"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-25T12:15:04.750075" elapsed="3.477348"/>
+<status status="PASS" start="2025-03-25T13:21:16.090945" elapsed="2.934069"/>
 </kw>
-<arg>problem_user</arg>
-<arg>secret_sauce</arg>
-<tag>@regresssion @smoke</tag>
-<doc>Login avec credentials Corrects</doc>
-<status status="PASS" start="2025-03-25T12:15:03.946136" elapsed="4.282275"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-25T12:15:08.229410" elapsed="0.000000"/>
-</kw>
-<status status="PASS" start="2025-03-25T12:15:01.102809" elapsed="7.129614"/>
+<status status="PASS" start="2025-03-25T13:21:12.500928" elapsed="6.530205"/>
 </test>
-<test id="s1-t3" name="Login Avec Cridentials Corrects" line="11">
+<test id="s1-t3" name="Case 3" line="10">
 <kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
-<msg time="2025-03-25T12:15:08.247947" level="INFO">Opening browser 'chrome' to base url 'http://www.saucedemo.com'.</msg>
+<msg time="2025-03-25T13:21:19.047853" level="INFO">Opening browser 'chrome' to base url 'http://www.saucedemo.com'.</msg>
 <arg>http://www.saucedemo.com</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-03-25T12:15:08.247947" elapsed="3.883059"/>
+<status status="PASS" start="2025-03-25T13:21:19.046850" elapsed="3.921319"/>
 </kw>
-<kw name="Login Avec Cridentials Corrects" owner="login_template">
-<kw name="Saisir Username" owner="login">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:12.135006" level="INFO">Typing text 'visual_user' into text field 'id:user-name'.</msg>
-<arg>id:user-name</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:12.134008" elapsed="0.310516"/>
+<kw name="Login Avec Cridentials Corrects">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${username} ${password}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-25T13:21:23.007165" elapsed="0.020013"/>
 </kw>
-<arg>${username}</arg>
-<status status="PASS" start="2025-03-25T12:15:12.133007" elapsed="0.311517"/>
-</kw>
-<kw name="Saisir Password" owner="login">
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:12.446524" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg time="2025-03-25T12:15:12.548445" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>id:password</arg>
-<arg>${password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:12.446524" elapsed="0.200001"/>
-</kw>
-<arg>${password}</arg>
-<status status="PASS" start="2025-03-25T12:15:12.445526" elapsed="0.202002"/>
-</kw>
-<kw name="Click Login" owner="login">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:12.649527" level="INFO">Clicking button 'id:login-button'.</msg>
-<arg>id:login-button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:12.648524" elapsed="0.231202"/>
-</kw>
-<status status="PASS" start="2025-03-25T12:15:12.647528" elapsed="0.233201"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-03-25T12:15:12.999146" level="INFO">${txt} = Products</msg>
-<var>${txt}</var>
-<arg>css:.title</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-03-25T12:15:12.880729" elapsed="0.118417"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${txt}</arg>
-<arg>Products</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-03-25T12:15:13.000152" elapsed="0.000000"/>
+<return>
+<value>${username}</value>
+<value>${password}</value>
+<status status="PASS" start="2025-03-25T13:21:23.027178" elapsed="0.000000"/>
+</return>
+<arg>username=visual_user</arg>
+<arg>password=secret_sauce</arg>
+<status status="PASS" start="2025-03-25T13:21:23.006170" elapsed="0.022012"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-25T12:15:13.001152" elapsed="3.339463"/>
+<status status="PASS" start="2025-03-25T13:21:23.198312" elapsed="4.772068"/>
 </kw>
-<arg>visual_user</arg>
-<arg>secret_sauce</arg>
-<tag>@regresssion @smoke</tag>
-<doc>Login avec credentials Corrects</doc>
-<status status="PASS" start="2025-03-25T12:15:12.132008" elapsed="4.209131"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-25T12:15:16.341139" elapsed="0.001013"/>
-</kw>
-<status status="PASS" start="2025-03-25T12:15:08.245946" elapsed="8.096206"/>
+<status status="PASS" start="2025-03-25T13:21:19.034650" elapsed="8.936243"/>
 </test>
-<status status="PASS" start="2025-03-25T12:14:53.906587" elapsed="22.437564"/>
+<status status="PASS" start="2025-03-25T13:21:02.197371" elapsed="25.776530"/>
 </suite>
 <statistics>
 <total>
@@ -220,12 +97,10 @@
 <tag>
 </tag>
 <suite>
-<stat name="Login Avec Template" id="s1" pass="3" fail="0" skip="0">Login Avec Template</stat>
+<stat name="Login Avec Template Data" id="s1" pass="3" fail="0" skip="0">Login Avec Template Data</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-03-25T12:14:53.965001" level="ERROR">Error in file 'c:\Users\Arnaud\Documents\Log\Robot_Framework\sauce-demo-robot\templates\login_template.robot' on line 5: Setting 'Test Template' is not allowed in resource file.</msg>
-<msg time="2025-03-25T12:15:01.102809" level="WARN">Multiple tests with name 'Login Avec Cridentials Corrects' executed in suite 'Login Avec Template'.</msg>
-<msg time="2025-03-25T12:15:08.245946" level="WARN">Multiple tests with name 'Login Avec Cridentials Corrects' executed in suite 'Login Avec Template'.</msg>
+<msg time="2025-03-25T13:21:02.170352" level="WARN">Error in file 'c:\Users\Arnaud\Documents\Log\Robot_Framework\sauce-demo-robot\tests\login_avec_template_data.robot' on line 17: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
 </errors>
 </robot>
