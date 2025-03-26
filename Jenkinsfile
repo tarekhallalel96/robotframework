@@ -16,6 +16,7 @@ pipeline {
                 sh '''
                 pip install --upgrade pip
                 pip install robotframework
+                pip install robotframework-datadriver
                 pip install robotframework-seleniumlibrary
                 '''
             }
