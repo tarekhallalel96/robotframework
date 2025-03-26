@@ -25,7 +25,7 @@ pipeline {
         stage('Run Robot Framework Tests') {
             steps {
                 
-                sh  'python3 -m robot tests/login_avec_template_data.robot'
+                sh  'python3 -m -d results robot tests/login_avec_template_data.robot'
                
             }
         }
@@ -33,8 +33,19 @@ pipeline {
     }
 
     post {
-        always {
-            cleanWs()
-        }
-    }
-}
+                always {
+                    // Note! Careful not to mix the Jenkins robot step with the robot command run inside the previous
+                    // sh step! The robot step only publishes the results for Jenkins and the robot command
+                    // inside sh step runs the tests!
+                    robot(
+                        outputPath          : 'results',
+                        outputFileName      : "output.xml",
+                        reportFileName      : 'report.html',
+                        logFileName         : 'log.html',
+                        disableArchiveOutput: false,
+                        passThreshold       : 95.0,
+                        unstableThreshold   : 95.0,
+                        otherFiles          : "*/.png",
+                    )
+                }
+            }}
