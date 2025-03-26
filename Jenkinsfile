@@ -24,7 +24,7 @@ pipeline {
         stage('Run Robot Framework Tests') {
             steps {
                 sh '''
-                robot --variable REMOTE_URL:http://localhost:4444 $ROBOT_DIR
+                robot --variable REMOTE_URL:http://127.0.0.1:4444 $ROBOT_DIR
                 '''
             }
         }
