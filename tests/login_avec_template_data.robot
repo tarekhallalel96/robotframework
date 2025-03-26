@@ -20,4 +20,4 @@ Login Avec Cridentials Corrects
 
 executer apres chaque test
     Log To Console    bye apres chaque test 
-    Open Browser    http://www.saucedemo.com    chrome    remote_url=http://127.0.0.1:4444/wd/hub
+    Open Browser    http://www.saucedemo.com    chrome    remote_url=http://192.168.1.95:4444/wd/hub

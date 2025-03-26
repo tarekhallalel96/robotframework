@@ -23,9 +23,9 @@ pipeline {
 
         stage('Run Robot Framework Tests') {
             steps {
-                sh '''
-                robot --variable REMOTE_URL:http://192.168.1.95:4444 $ROBOT_DIR
-                '''
+                
+                sh  'python3 -m robot tests/login_avec_template_data.robot'
+               
             }
         }
 
