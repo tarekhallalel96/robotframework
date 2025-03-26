@@ -16,7 +16,7 @@ Login Avec Cridentials Corrects    ${username}    ${password}
 Login Avec Cridentials Corrects
     [Arguments]    ${username}    ${password}
     Log To Console    ${username} ${password}
-    [Return]    ${username}    ${password}
+    RETURN    ${username}    ${password}
 
 executer apres chaque test
     Log To Console    bye apres chaque test 
